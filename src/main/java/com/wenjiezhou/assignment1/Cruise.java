@@ -1,5 +1,11 @@
 package com.wenjiezhou.assignment1;
 
+/*
+Student Name: Wenjie Zhou
+Student Number: 301337168
+Submission Date: Feb 11, 2024
+*/
+
 public class Cruise {
 
     private String firstName;

@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/*
+Student Name: Wenjie Zhou
+Student Number: 301337168
+Submission Date: Feb 11, 2024
+*/
+
 @Controller
 public class CruiseController {
 
