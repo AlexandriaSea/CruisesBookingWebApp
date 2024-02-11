@@ -19,20 +19,19 @@ public class Cruise {
     private boolean isInsideCabin;
     private boolean isOutsideCabin;
     private String ageGroup;
-    private int roomPrice;
+    private double roomPrice;
     public double tripPrice;
-    public double discount;
+    public double discount = 0.00;
     private double taxRate = 0.13;
 
     public double tax;
-    private double seniorDiscount = 0.90;
+    private double seniorDiscount = 0.10;
     private double additionalPersonFee = 1000.00;
 
     public Cruise(String firstName, String lastName, String areaCode, String phoneNumber,
                   String streetAddress_1, String streetAddress_2, String city, String province,
                   String postalCode, String country, String email, int roomNumber, String roomType,
-                  int roomPrice, int guestNumber, String ageGroup)
-    {
+                  double roomPrice, int guestNumber, String ageGroup) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.areaCode = areaCode;
@@ -51,12 +50,22 @@ public class Cruise {
         this.ageGroup = ageGroup;
 
         tripPrice = roomPrice * roomNumber + (guestNumber - roomNumber * 2) * additionalPersonFee;
-        if(ageGroup == "Yes"){
+
+        if (ageGroup.equals("Yes")) {
             discount = tripPrice * seniorDiscount;
             tripPrice -= discount;
         }
+
         tax = tripPrice * taxRate;
         tripPrice += tax;
+    }
+
+    public double getAdditionalCharge() {
+        return (guestNumber - roomNumber * 2) * additionalPersonFee;
+    }
+
+    public double getTotalRoomPrice() {
+        return roomPrice * roomNumber;
     }
 
     public String getFirstName() {
@@ -179,15 +188,15 @@ public class Cruise {
         isInsideCabin = insideCabin;
     }
 
-    public double getTripPrice(){
+    public double getTripPrice() {
         return tripPrice;
     }
 
-    public int getRoomPrice() {
+    public double getRoomPrice() {
         return roomPrice;
     }
 
-    public void setRoomPrice(int roomPrice) {
+    public void setRoomPrice(double roomPrice) {
         this.roomPrice = roomPrice;
     }
 
